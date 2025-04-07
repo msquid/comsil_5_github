@@ -1,0 +1,10 @@
+if [ $# = 0 ]
+then
+echo Usage: phone searchfor \[... searchfor\]
+echo \(You didn\'t tell me what you want to search for.\)
+else
+changed=$*
+changed=${changed//\ /\" \| egrep -i \"}
+run=cat\ mydata.txt\ \|\ egrep\ -i\ \"$changed\"\ \|\ awk\ -f\ display.awk
+eval $run
+fi
